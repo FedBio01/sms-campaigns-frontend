@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import React, {useState} from "react";
+//import React, {useState} from "react";
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import ErrorPage from './Pages/ErrorPage';
@@ -9,7 +9,13 @@ import Profile from './Pages/Profile';
 import Register from './Pages/Register';
 
 function App() {
-  return <Router> 
+
+
+  /*if(!token) {
+    return <Login />
+  }*/
+  //else{
+    return <Router> 
     <nav>
       <Link to="/"> Home </Link>
       <Link to="/login"> Login </Link>
@@ -30,7 +36,6 @@ function App() {
     </div>
   </Router>;
 
-
-}
+  }
 
 export default App;

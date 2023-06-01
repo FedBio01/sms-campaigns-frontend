@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import swal from 'sweetalert'
 
 async function loginUser(credentials) {
-    return fetch('http://localhost:4000/api/signin', {
+    return fetch('http://10.200.200.6:4000/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

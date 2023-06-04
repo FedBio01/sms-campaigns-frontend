@@ -1,0 +1,19 @@
+.login-box{
+    width: 300px; /* Regola la larghezza del riquadro */
+    margin: 0 auto; /* Centra il riquadro orizzontalmente nella pagina */
+    padding: 20px; /* Aggiunge spazio interno al riquadro */
+    border: 1px solid #ccc; /* Aggiunge un bordo al riquadro */
+    border-radius: 5px; /* Arrotonda gli angoli del riquadro */
+  }
+  
+  .login-box input {
+    width: 100%; /* Riempi completamente lo spazio disponibile */
+    margin-bottom: 10px; /* Aggiunge uno spazio inferiore tra gli input */
+    padding: 10px; /* Aggiunge spazio interno agli input */
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  

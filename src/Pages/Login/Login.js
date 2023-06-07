@@ -8,7 +8,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import "./login.css"
 
 async function loginUser(credentials) {
-    return fetch('http://10.200.200.6:4000/api/signin', {
+    return fetch('http://10.200.200.7:4000/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

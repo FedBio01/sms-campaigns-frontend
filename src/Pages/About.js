@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import withAuth from '../Components/withAuth';
 
 function About (){
     let navigate = useNavigate();
@@ -12,4 +13,4 @@ function About (){
     );
 }
 
-export default About;
+export default withAuth(About);

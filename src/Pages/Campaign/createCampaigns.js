@@ -1,24 +1,26 @@
-import withAuth from '../Components/withAuth';
+import withAuth from '../../Components/withAuth';
 
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 
-function MessageForm() {
-  const [destinationNumber, setDestinationNumber] = useState('');
+function CampaignForm() {
+  const [destinationNumbers, setDestinationNumbers] = useState('');
   const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
   const token = localStorage.getItem('token')
-  let fields = {destinationNumber,message}
+  const user = localStorage.getItem('user')
+  let fields = {name,destinationNumbers,message,user}
   
 
   const handleSubmit = async e => {
     e.preventDefault();
-    fetch('http://10.200.200.7:4000/api/sendsms', {
+    fetch('http://10.200.200.3:3000/api/initializeCampaign', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer '+token
         },
-        body: JSON.stringify(fields)    
+        body: JSON.stringify({...fields, destinationNumbers: destinationNumbers.split(" "), user: JSON.parse(user)})    
     })
     .then((data) => {
         console.log(data.text)
@@ -30,17 +32,25 @@ function MessageForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-        <h2>Send SMS</h2>
-      <TextField
-        label="Destinatario"
-        value={destinationNumber}
+        <h2>Create Campaign</h2>
+        <TextField
+        label="Nome Campaign"
+        value={name}
         onChange={(event) => {
-            setDestinationNumber(event.target.value);
+            setName(event.target.value);
           }}
         fullWidth
       />
       <TextField
-        label="Messaggio"
+        label="Recipients"
+        value={destinationNumbers}
+        onChange={(event) => {
+            setDestinationNumbers(event.target.value);
+          }}
+        fullWidth
+      />
+      <TextField
+        label="Message"
         value={message}
         onChange={(event) => {
             setMessage(event.target.value);
@@ -50,10 +60,10 @@ function MessageForm() {
         fullWidth
       />
       <Button variant="contained" type="submit">
-        Invia
+        Create
       </Button>
     </form>
   );
 }
 
-export default withAuth(MessageForm);
+export default withAuth(CampaignForm);

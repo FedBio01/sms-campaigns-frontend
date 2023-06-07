@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import swal from 'sweetalert'
-import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input,Checkbox,Alert,Stack} from "@mui/material";
+import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input,Alert,Stack} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import "./login.css"
 
 async function loginUser(credentials) {
-    return fetch('http://10.200.200.7:4000/api/signin', {
+    return fetch('http://10.200.200.3:3000/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -32,14 +32,12 @@ const Login = () => {
 
     const [formValid] = useState();
     const [success] = useState();
-    const [rememberMe, setRememberMe] = useState();
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
 
-    const label = { inputProps: { "aria-label": "Checkbox demo" } };
     const navigate = useNavigate();
 
     const handlePassword = () => {
@@ -127,14 +125,7 @@ const Login = () => {
         </FormControl>
       </div>
 
-      <div style={{ fontSize: "10px" }}>
-        <Checkbox
-          {...label}
-          size="small"
-          onChange={(event) => setRememberMe(event.target.checked)}
-        />
-        Remember Me
-      </div>
+      
 
       <div style={{ marginTop: "10px" }}>
         <Button
@@ -164,10 +155,9 @@ const Login = () => {
       )}
 
       <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
-        <a>Forgot Password</a>
         <br />
         Do you have an account ?{" "}
-        <small style={{ textDecoration: "underline", color: "blue" }} onClick={() => {navigate("/register")}}>
+        <small style={{ textDecoration: "underline", color: "blue" }} onClick={() => {navigate("/signup")}}>
           Sign Up
         </small>
       </div>

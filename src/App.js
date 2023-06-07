@@ -7,16 +7,11 @@ import ErrorPage from './Pages/ErrorPage';
 import About from './Pages/About';
 import Profile from './Pages/Profile';
 import SignUp from './Pages/SignUp/Signup';
-import Sms from './Pages/Sms.js';
+import Campaigns from './Pages/Campaign/createCampaigns'
 import Navbar from './Components/navbar.js';
+import StatsCampaigns from './Pages/Campaign/statsCampaigns';
 
 function App() {
-
-
-  /*if(!token) {
-    return <Login />
-  }*/
-  //else{
     return <Router> 
     <Navbar />
     <Routes>
@@ -24,7 +19,9 @@ function App() {
       <Route path="/Home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/sms" element={<Sms />} />
+      <Route path="/createCampaigns" element={<Campaigns />} />
+      <Route path="/statsCampaigns" element={<StatsCampaigns />} />
+
       <Route path="/profile/:username" element={<Profile />} />
       <Route path="/about" element={<About />} />
       <Route path="*" element={<ErrorPage />} />

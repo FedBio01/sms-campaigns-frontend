@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input,Checkbox,Alert,Stack} from "@mui/material";
+import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
@@ -23,13 +23,6 @@ const SignUp = () => {
     const [usernameError, setUsernameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-
-    //overall validity
-    const [formValid, setFormValid] = useState();
-    const [success, setSuccess] = useState();
-
-    //label checkbox
-    const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
     //onBlur Username
     const handleUsername = () => {
@@ -77,7 +70,7 @@ const SignUp = () => {
 
     const handleSubmit = async e => {
       e.preventDefault();
-      fetch('http://localhost:4000/api/signup', {
+      fetch('http://10.200.200.3:3000/api/signup', {
         method: 'POST',
         headers: {
          'Content-Type': 'application/json'
@@ -175,24 +168,6 @@ const SignUp = () => {
           SignUp
         </Button>
       </div>
-
-      {/* Show Form Error if any */}
-      {formValid && (
-        <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-          <Alert severity="error" size="small">
-            {formValid}
-          </Alert>
-        </Stack>
-      )}
-
-      {/* Show Success if no issues */}
-      {success && (
-        <Stack sx={{ width: "100%", paddingTop: "10px" }} spacing={2}>
-          <Alert severity="success" size="small">
-            {success}
-          </Alert>
-        </Stack>
-      )}
     </div>
     )
 }

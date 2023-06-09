@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Container } from '@mui/material';
+import withAuth from '../../Components/withAuth';
+
 
 
 
@@ -24,9 +26,16 @@ const VisualizeCampaigns = () => {
     const [tableData, setTableData] = useState([])
 
     useEffect(() => {
-        fetch("http://10.200.200.4:4000/api/prova")
+        const token = localStorage.getItem('token')
+        fetch("http://10.200.200.4:4000/api/prova", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + token
+            },
+        })
+            
             .then((data) => data.json())
-            //.then((data) => console.log(data))
             .then((data) => setTableData(data))
             .catch((e) => {
                 console.error(e)
@@ -36,7 +45,7 @@ const VisualizeCampaigns = () => {
 
     return (
         <Container>
-            <div style={{ height: 400, width: '100%' }}>
+            <div style={{ height: 700, width: '100%' }}>
                 <h2>Campaign Storage</h2>
                 <DataGrid
                     getRowId={(row) => row._id}
@@ -64,4 +73,4 @@ const VisualizeCampaigns = () => {
     );
 }
 
-export default VisualizeCampaigns;
+export default withAuth(VisualizeCampaigns);

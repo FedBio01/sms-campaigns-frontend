@@ -8,7 +8,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import "./login.css"
 
 async function loginUser(credentials) {
-    return fetch('http://10.200.200.3:3000/api/signin', {
+    return fetch('http://10.200.200.4:4000/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ const Login = () => {
           .then((value) => {
             localStorage.setItem('token', response['token']);
             localStorage.setItem('user', JSON.stringify(response['user']));
-            window.location.href = "/";
+            navigate("/")
           });
         } else {
           swal("Failed", "Wrong", "error");

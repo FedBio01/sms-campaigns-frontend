@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from 'react-router-dom'
 
 const pages = ['Home', 'Login', 'Signup'];
-const settings = ['Create', 'Visualize', 'Stats'];
+const settings = ['Create','Send','Visualize', 'Stats'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

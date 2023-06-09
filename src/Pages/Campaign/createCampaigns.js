@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Container } from '@mui/material';
+import axios from 'axios'
 
 function CampaignForm() {
   const [destinationNumbers, setDestinationNumbers] = useState('');
@@ -18,24 +19,26 @@ function CampaignForm() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    fetch('http://10.200.200.4:4000/api/initializeCampaign', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token
-      },
-      body: JSON.stringify({ ...fields, destinationNumbers: destinationNumbers.split(" "), user: JSON.parse(user) })
-    })
-      .then((data) => {
+
+    try {
+      await axios.post('http://10.200.200.4:4000/api/initializeCampaign', {
+        ...fields,
+        destinationNumbers: destinationNumbers.split(" "),
+        user: JSON.parse(user)
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
+        }
+      });
         swal("Campaign created", "", "success")
           .then(() => {
-            navigate("/visualizeCampaigns")
-          })
-      })
-      .catch((error) => {
-        console.error(error)
-        swal("Failed", "", "error");
-      })
+            navigate("/SendCampaigns");
+          });
+    } catch (error) {
+      console.error(error);
+      swal("Failed", "", "error");
+    }
   };
 
   return (

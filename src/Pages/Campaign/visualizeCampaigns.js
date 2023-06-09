@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Container } from '@mui/material';
 import withAuth from '../../Components/withAuth';
+import axios from 'axios'
 
 
 
@@ -15,7 +16,8 @@ const columns = [
     { field: 'creator', headerName: 'Creator' },
     { field: 'totalSms', headerName: '#sms' },
     { field: 'creationDate', headerName: 'Creation date', width: 300 },
-    { field: 'messageText', headerName: 'Message', width: 300 }
+    { field: 'messageText', headerName: 'Message', width: 250 },
+    { field: 'start', headerName: 'Status', width: 300 }
 ]
 
 
@@ -23,25 +25,24 @@ const columns = [
 
 //nome creatore message text, smss, total sms, creation Date, start, finish
 const VisualizeCampaigns = () => {
-    const [tableData, setTableData] = useState([])
+    const [tableData, setTableData] = useState([]);
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        fetch("http://10.200.200.4:4000/api/prova", {
-            method: 'GET',
+        const token = localStorage.getItem('token');
+
+        axios.get("http://10.200.200.4:4000/api/prova", {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token
-            },
+            }
         })
-            
-            .then((data) => data.json())
-            .then((data) => setTableData(data))
-            .catch((e) => {
-                console.error(e)
+            .then((response) => {
+                setTableData(response.data);
             })
-
-    },[])
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
 
     return (
         <Container>

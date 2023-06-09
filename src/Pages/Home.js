@@ -29,10 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
   
-  function createData(
-    name: string,
-    campaigns: string,
-  ) {
+  function createData(name,campaigns) {
     return {name, campaigns};
   }
 

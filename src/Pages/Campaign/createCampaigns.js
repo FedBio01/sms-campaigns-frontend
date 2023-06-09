@@ -12,9 +12,10 @@ function CampaignForm() {
   let fields = {name,destinationNumbers,message,user}
   
 
+
   const handleSubmit = async e => {
     e.preventDefault();
-    fetch('http://10.200.200.3:3000/api/initializeCampaign', {
+    fetch('http://10.200.200.4:4000/api/initializeCampaign', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -10,6 +10,7 @@ import SignUp from './Pages/SignUp/Signup';
 import Campaigns from './Pages/Campaign/createCampaigns'
 import Navbar from './Components/navbar.js';
 import StatsCampaigns from './Pages/Campaign/statsCampaigns';
+import VisualizeCampaigns from './Pages/Campaign/visualizeCampaigns';
 
 function App() {
     return <Router> 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/createCampaigns" element={<Campaigns />} />
       <Route path="/statsCampaigns" element={<StatsCampaigns />} />
+      <Route path="/visualizeCampaigns" element={<VisualizeCampaigns />} />
 
       <Route path="/profile/:username" element={<Profile />} />
       <Route path="/about" element={<About />} />

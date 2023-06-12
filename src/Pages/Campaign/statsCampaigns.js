@@ -34,7 +34,7 @@ const StatsCampaigns = () => {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user')
 
-    axios.post(`http://${server_ip}/api/getStatisticsByUser`, { user: JSON.parse(user) }, {
+    axios.post(`http://${server_ip}/api/get-statistics-by-user`, { user: JSON.parse(user) }, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + token

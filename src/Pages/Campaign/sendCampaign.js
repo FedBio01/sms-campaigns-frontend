@@ -32,7 +32,7 @@ const SendCampaigns = () => {
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
 
-        axios.post(`http://${server_ip}/api/userActivableCampaign`, { user: JSON.parse(user) }, {
+        axios.post(`http://${server_ip}/api/user-activable-campaign`, { user: JSON.parse(user) }, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token
@@ -49,7 +49,7 @@ const SendCampaigns = () => {
         let campaign = { campaign: cellValues.row.name };
 
         try {
-            await axios.post(`http://${server_ip}/api/SendCampaign`, campaign, {
+            await axios.post(`http://${server_ip}/api/send-campaign`, campaign, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + token

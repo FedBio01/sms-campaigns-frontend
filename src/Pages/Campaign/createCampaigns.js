@@ -24,7 +24,7 @@ function CampaignForm() {
     e.preventDefault();
 
     try {
-      await axios.post(`http://${server_ip}/api/initializeCampaign`, {
+      await axios.post(`http://${server_ip}/api/initialize-campaign`, {
         ...fields,
         destinationNumbers: destinationNumbers.split(" "),
         user: JSON.parse(user)

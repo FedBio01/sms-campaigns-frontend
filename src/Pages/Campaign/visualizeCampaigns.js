@@ -5,6 +5,8 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Container } from '@mui/material';
 import withAuth from '../../Components/withAuth';
 import axios from 'axios'
+import configuration from "../../configuration.json";
+const server_ip = configuration.server_ip;
 
 
 
@@ -30,7 +32,7 @@ const VisualizeCampaigns = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        axios.get("http://10.200.200.4:4000/api/prova", {
+        axios.get(`http://${server_ip}/api/visualizeCampaign`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token

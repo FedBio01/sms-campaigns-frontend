@@ -6,9 +6,11 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import "./login.css"
+import configuration from "../../configuration.json";
+const server_ip = configuration.server_ip;
 
 async function loginUser(credentials) {
-    return fetch('http://10.200.200.4:4000/api/signin', {
+    return fetch(`http://${server_ip}/api/signin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

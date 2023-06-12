@@ -5,6 +5,8 @@ import { TextField, Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Container } from '@mui/material';
 import axios from 'axios'
+import configuration from "../../configuration.json";
+const server_ip = configuration.server_ip;
 
 function CampaignForm() {
   const [destinationNumbers, setDestinationNumbers] = useState('');
@@ -21,7 +23,7 @@ function CampaignForm() {
     e.preventDefault();
 
     try {
-      await axios.post('http://10.200.200.4:4000/api/initializeCampaign', {
+      await axios.post(`http://${server_ip}/api/initializeCampaign`, {
         ...fields,
         destinationNumbers: destinationNumbers.split(" "),
         user: JSON.parse(user)

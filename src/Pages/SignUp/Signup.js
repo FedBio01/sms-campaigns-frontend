@@ -5,6 +5,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import swal from 'sweetalert'
 import "./signup.css"
+import configuration from "../../configuration.json";
+const server_ip = configuration.server_ip;
 
 //controllo email valida
 const isEmail = (email) =>
@@ -71,7 +73,7 @@ const SignUp = () => {
 
     const handleSubmit = async e => {
       e.preventDefault();
-      fetch('http://10.200.200.4:4000/api/signup', {
+      fetch(`http://${server_ip}/api/signup`, {
         method: 'POST',
         headers: {
          'Content-Type': 'application/json'

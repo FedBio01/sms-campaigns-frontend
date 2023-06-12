@@ -1,71 +1,83 @@
-import React from "react";
-import withAuth from "../../Components/withAuth";
+import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { Container } from '@mui/material';
+import withAuth from '../../Components/withAuth';
+import axios from 'axios'
+import configuration from "../../configuration.json";
+const server_ip = configuration.server_ip;
 
-import { Typography, TextField} from '@mui/material';
 
-class StatsCampaigns extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      campaignName: '',
-      totalNumbers: 0,
-      message: ''
-    };
-  }
 
-  handleCampaignNameChange = (event) => {
-    this.setState({ campaignName: event.target.value });
-  };
 
-  handleTotalNumbersChange = (event) => {
-    this.setState({ totalNumbers: event.target.value });
-  };
 
-  handleMessageChange = (event) => {
-    this.setState({ message: event.target.value });
-  };
+const columns = [
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    // Invia i dati della campagna al tuo backend o esegui l'azione desiderata
-    // Qui puoi effettuare una richiesta API per inviare i messaggi agli utenti
-    // Utilizza i valori presenti in this.state.campaignName, this.state.totalNumbers e this.state.message
-    console.log('Dati della campagna inviati:', this.state);
-  };
+    { field: 'name', headerName: 'Name', width: 300, },
+    { field: 'creator', headerName: 'Creator' },
+    { field: 'totalSms', headerName: '#sms' },
+    { field: 'creationDate', headerName: 'Creation date', width: 300 },
+    { field: 'messageText', headerName: 'Message', width: 250 },
+    { field: 'start', headerName: 'Start', width: 300 },
+    { field: 'finish', headerName: 'Finish', width: 300 },
+    { field: 'totalSent', headerName: '#sent sms', width: 300 },
+    { field: 'totalReject', headerName: '#rejected sms', width: 300 },
+]
 
-  render() {
+
+
+
+//nome creatore message text, smss, total sms, creation Date, start, finish
+const StatsCampaigns = () => {
+    const [tableData, setTableData] = useState([]);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user')
+
+        axios.post(`http://${server_ip}/api/getStatisticsByUser`,{ user: JSON.parse(user) }, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + token
+            }
+        })
+          .then((response) => {
+                setTableData(response.data);
+          })
+          .catch((error) => {
+                console.error(error);
+          });
+    }, []);
+
     return (
-      <div>
-        <Typography variant="h5">SMS Campaign</Typography>
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            label="Nome of Campaigns"
-            value={this.state.campaignName}
-            onChange={this.handleCampaignNameChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Total number"
-            type="number"
-            value={this.state.totalNumbers}
-            onChange={this.handleTotalNumbersChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Message"
-            value={this.state.message}
-            onChange={this.handleMessageChange}
-            multiline
-            rows={4}
-            fullWidth
-            margin="normal"
-          />
-        </form>
-      </div>
+        <Container>
+            <div style={{ height: 700, width: '100%' }}>
+                <h2>Campaign Stats</h2>
+                <DataGrid
+                    getRowId={(row) => row._id}
+                    rows={tableData}
+                    columns={columns}
+                    getRowHeight={() => 'auto'}
+                    slots={{ toolbar: GridToolbar }}
+                    sx={{
+                        '&.MuiDataGrid-root--densityCompact .MuiDataGrid-cell': {
+                            py: 1,
+                        },
+                        '&.MuiDataGrid-root--densityStandard .MuiDataGrid-cell': {
+                            py: '15px',
+                        },
+                        '&.MuiDataGrid-root--densityComfortable .MuiDataGrid-cell': {
+                            py: '22px',
+                        },
+                    }}
+                />
+            </div>
+
+        </Container>
+
+
     );
-  }
 }
 
 export default withAuth(StatsCampaigns);

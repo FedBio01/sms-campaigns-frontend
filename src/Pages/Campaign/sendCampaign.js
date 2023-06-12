@@ -6,7 +6,7 @@ import { Container, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send'
 import withAuth from '../../Components/withAuth';
 import swal from 'sweetalert'
-import {useNavigate} from "react-router-dom";
+import axios from 'axios'
 
 
 
@@ -24,50 +24,42 @@ const columns = [
 const SendCampaigns = () => {
     const [tableData, setTableData] = useState([]);
     const token = localStorage.getItem('token');
-    const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        const user = localStorage.getItem('user')
-        fetch("http://10.200.200.4:4000/api/userActivableCampaign", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token
-            },
-            body: JSON.stringify({ user: JSON.parse(user) })
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+      
+        axios.post('http://10.200.200.4:4000/api/userActivableCampaign', { user: JSON.parse(user) }, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+          }
         })
-            .then((data) => data.json())
-            .then((data) => setTableData(data))
-            .catch((e) => {
-                console.error(e)
-            })
-
-    }, [])
+          .then(response => setTableData(response.data))
+          .catch(error => {
+            console.error(error);
+          });
+      }, []);
 
     const handleClick = async (e, cellValues) => {
         e.preventDefault();
-        let campaign = { campaign: cellValues.row.name }
-        console.log(campaign)
-        fetch('http://10.200.200.4:4000/api/SendCampaigns', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token
-            },
-            body: JSON.stringify(campaign)
-        })
-
-            .then((data) => {
-                swal("Campaign sent", "", "success")
-                    .then(() => {
-                        navigate("/sendCampaign")
-                    })
-            })
-            .catch((error) => {
-                console.error(error)
-                swal("Failed", "", "error");
-            })
+        let campaign = { campaign: cellValues.row.name };
+        
+        try {
+            await axios.post('http://10.200.200.4:4000/api/SendCampaign', campaign, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + token
+                }
+            });
+    
+            swal("Campaign sent", "", "success").then(() => {
+                window.location.reload(false);
+            });
+        } catch (error) {
+            console.error(error);
+            swal("Failed", "", "error");
+        }
     };
 
     return (

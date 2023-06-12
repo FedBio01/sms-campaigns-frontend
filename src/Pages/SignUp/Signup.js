@@ -3,6 +3,7 @@ import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input}
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
+import swal from 'sweetalert'
 import "./signup.css"
 
 //controllo email valida
@@ -70,7 +71,7 @@ const SignUp = () => {
 
     const handleSubmit = async e => {
       e.preventDefault();
-      fetch('http://10.200.200.3:3000/api/signup', {
+      fetch('http://10.200.200.4:4000/api/signup', {
         method: 'POST',
         headers: {
          'Content-Type': 'application/json'
@@ -80,8 +81,9 @@ const SignUp = () => {
       .then((data) => data.json())
       .then((data)=>{
         if(data.status != null && data.status!==200)
-          alert("fail due to " + data.message);
-        else alert(data.text);
+        swal("Error",data.message,"error");
+          
+        else  swal("Success","","success");
       })
       .catch((error) => {
        alert("Registration failed due to: " + error.message);

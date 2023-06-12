@@ -16,14 +16,11 @@ const server_ip = configuration.server_ip;
 const columns = [
 
   { field: 'name', headerName: 'Name', width: 300, },
-  { field: 'creator', headerName: 'Creator' },
-  { field: 'totalSms', headerName: '#sms' },
-  { field: 'creationDate', headerName: 'Creation date', width: 300 },
-  { field: 'messageText', headerName: 'Message', width: 250 },
-  { field: 'start', headerName: 'Start', width: 300 },
-  { field: 'finish', headerName: 'Finish', width: 300 },
-  { field: 'totalSent', headerName: '#sent sms', width: 300 },
-  { field: 'totalReject', headerName: '#rejected sms', width: 300 },
+  { field: 'totalSms', headerName: '#sms', width: 120 },
+  { field: 'start', headerName: 'Start', width: 230  },
+  { field: 'percentSent', headerName : '%Sent sms'},
+  { field: 'totalSent', headerName: '#Sent sms', width: 120 },
+  { field: 'totalRejected', headerName: '#Rejected sms', width: 120},
 ]
 
 

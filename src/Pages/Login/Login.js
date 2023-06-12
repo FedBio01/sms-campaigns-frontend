@@ -62,24 +62,24 @@ const Login = () => {
           password
         });
         if ('token' in response) {
-          swal("Success", "Good", "success", {
+          swal("Login successfull", " ", "success", {
             buttons: false,
             timer: 2000,
           })
           .then((value) => {
             localStorage.setItem('token', response['token']);
             localStorage.setItem('user', JSON.stringify(response['user']));
-            navigate("/visualizeCampaigns")
+            navigate("/visualize-campaigns")
           });
         } else {
-          swal("Failed", "Wrong", "error");
+          swal("Failed", response.message, "error");
         }
       }
 
     return (
-      <div className="login-box">
+      <div className="login-box" style={{ marginTop: "120px", width:"45%" }}>
         <h2>Login</h2>
-      <div style={{ marginTop: "5px" }}>
+      <div style={{ marginTop: "10px" }}>
         <TextField
           label="Username"
           fullWidth
@@ -158,7 +158,7 @@ const Login = () => {
 
       <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
         <br />
-        Do you have an account ?{" "}
+        Don't have an account?{" "}
         <small style={{ textDecoration: "underline", color: "blue" }} onClick={() => {navigate("/signup")}}>
           Sign Up
         </small>

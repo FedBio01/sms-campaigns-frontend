@@ -16,10 +16,10 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/createCampaigns" element={<Campaigns />} />
-      <Route path="/statsCampaigns" element={<StatsCampaigns />} />
-      <Route path="/sendCampaigns" element={<SendCampaigns />} />
-      <Route path="/visualizeCampaigns" element={<VisualizeCampaigns />} />
+      <Route path="/create-campaigns" element={<Campaigns />} />
+      <Route path="/stats-campaigns" element={<StatsCampaigns />} />
+      <Route path="/send-campaigns" element={<SendCampaigns />} />
+      <Route path="/visualize-campaigns" element={<VisualizeCampaigns />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   </Router>;

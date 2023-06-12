@@ -14,7 +14,7 @@ import Logout from '../Pages/Logout'
 import {useNavigate} from 'react-router-dom'
 
 
-const settings = ['Create','Send','Visualize', 'Stats'];
+const settings = ['create','send','visualize', 'stats'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -97,7 +97,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={() => {navigate('/'+setting+'Campaigns')}}>
+                <MenuItem key={setting} onClick={() => {navigate('/'+setting+'-campaigns')}}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

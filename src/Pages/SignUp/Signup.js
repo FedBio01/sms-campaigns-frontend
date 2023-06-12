@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -15,6 +16,7 @@ const isEmail = (email) =>
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = React.useState(false);
+    const navigate = useNavigate();
 
     //input
     const [username, setUsername] = useState ();
@@ -93,7 +95,7 @@ const SignUp = () => {
     }
 
     return (
-      <div className="signup-box">
+      <div className="signup-box" style={{ marginTop: "120px", width:"45%" }}>
         <h2>Signup</h2>
       <div style={{ marginTop: "10px" }}>
         <TextField
@@ -171,6 +173,14 @@ const SignUp = () => {
         >
           SignUp
         </Button>
+      </div>
+
+      <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
+        <br />
+        Do you have an account ?{" "}
+        <small style={{ textDecoration: "underline", color: "blue" }} onClick={() => {navigate("/login")}}>
+          Sign In
+        </small>
       </div>
     </div>
     )

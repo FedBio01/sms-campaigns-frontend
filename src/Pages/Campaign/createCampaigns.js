@@ -1,7 +1,7 @@
 import withAuth from '../../Components/withAuth';
 import swal from 'sweetalert'
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Box } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Container } from '@mui/material';
 import axios from 'axios';
@@ -50,6 +50,7 @@ function CampaignForm() {
     <Container>
       <form onSubmit={handleSubmit}>
         <h2>Create Campaign</h2>
+        <Box mb={2}>
         <TextField
           label="Campaign Name"
           value={name}
@@ -58,6 +59,8 @@ function CampaignForm() {
           }}
           fullWidth
         />
+        </Box>
+        <Box mb={2}>
         <TextField
           label="Recipients"
           value={destinationNumbers}
@@ -65,8 +68,8 @@ function CampaignForm() {
             setDestinationNumbers(event.target.value);
           }}
           fullWidth
-          margin-top 
         />
+        </Box>
         <TextField
           label="Message"
           value={message}

@@ -156,10 +156,10 @@ const Login = () => {
         </Stack>
       )}
 
-      <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
+      <div style={{ marginTop: "20px", fontSize: "15px" }} margin="left">
         <br />
         Don't have an account?{" "}
-        <small style={{ textDecoration: "underline", color: "blue" }} onClick={() => {navigate("/signup")}}>
+        <small style={{ textDecoration: "underline", color: "blue", fontSize: "15px" }} onClick={() => {navigate("/signup")}}>
           Sign Up
         </small>
       </div>

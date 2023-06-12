@@ -36,7 +36,7 @@ function CampaignForm() {
       });
         swal("Campaign created", "", "success")
           .then(() => {
-            navigate("/SendCampaigns");
+            navigate("/send-campaigns");
           });
     } catch (error) {
       console.error(error);

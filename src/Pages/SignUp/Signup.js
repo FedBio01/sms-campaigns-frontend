@@ -87,7 +87,10 @@ const SignUp = () => {
         if(data.status != null && data.status!==200)
         swal("Error",data.message,"error");
           
-        else  swal("Success","","success");
+        else{
+          swal("Success","","success");
+          navigate("/login")
+        }  
       })
       .catch((error) => {
        alert("Registration failed due to: " + error.message);
@@ -175,10 +178,10 @@ const SignUp = () => {
         </Button>
       </div>
 
-      <div style={{ marginTop: "7px", fontSize: "10px" }} margin="left">
+      <div style={{ marginTop: "20px", fontSize: "15px" }} margin="left">
         <br />
-        Do you have an account ?{" "}
-        <small style={{ textDecoration: "underline", color: "blue" }} onClick={() => {navigate("/login")}}>
+        Do you have an account ? {" "}
+        <small style={{ textDecoration: "underline", color: "blue",  fontSize: "15px"}} onClick={() => {navigate("/login")}}>
           Sign In
         </small>
       </div>

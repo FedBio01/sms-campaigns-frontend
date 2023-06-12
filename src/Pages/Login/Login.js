@@ -69,7 +69,7 @@ const Login = () => {
           .then((value) => {
             localStorage.setItem('token', response['token']);
             localStorage.setItem('user', JSON.stringify(response['user']));
-            navigate("/")
+            navigate("/visualizeCampaigns")
           });
         } else {
           swal("Failed", "Wrong", "error");

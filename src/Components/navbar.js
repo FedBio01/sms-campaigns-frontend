@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Logout from '../Pages/Logout'
 import {useNavigate} from 'react-router-dom'
 
-const pages = ['Home', 'Login', 'Signup'];
+const pages = ['Login', 'Signup'];
 const settings = ['Create','Send','Visualize', 'Stats'];
 
 function ResponsiveAppBar() {

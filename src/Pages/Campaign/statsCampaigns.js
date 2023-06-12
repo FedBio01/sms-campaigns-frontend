@@ -53,7 +53,7 @@ const StatsCampaigns = () => {
     return (
         <Container>
             <div style={{ height: 700, width: '100%' }}>
-                <h2>Campaign Stats</h2>
+                <h2>Campaign Statistics</h2>
                 <DataGrid
                     getRowId={(row) => row._id}
                     rows={tableData}

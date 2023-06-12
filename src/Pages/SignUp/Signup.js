@@ -180,7 +180,7 @@ const SignUp = () => {
 
       <div style={{ marginTop: "20px", fontSize: "15px" }} margin="left">
         <br />
-        Do you have an account ? {" "}
+        Do you have an account? {" "}
         <small style={{ textDecoration: "underline", color: "blue",  fontSize: "15px"}} onClick={() => {navigate("/login")}}>
           Sign In
         </small>

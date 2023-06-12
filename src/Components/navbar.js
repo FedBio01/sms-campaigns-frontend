@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Logout from '../Pages/Logout'
 import {useNavigate} from 'react-router-dom'
 
-const pages = ['Login', 'Signup'];
+
 const settings = ['Create','Send','Visualize', 'Stats'];
 
 function ResponsiveAppBar() {
@@ -42,9 +42,6 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-         
-
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -74,23 +71,9 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => {navigate('/'+page)}}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
             <Logout/>
             <Tooltip title="Open settings">
               <Button onClick={handleOpenUserMenu} sx={{ my: 2, color: 'white', display: 'block' }}>

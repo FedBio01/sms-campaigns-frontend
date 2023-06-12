@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Container } from '@mui/material';
-import axios from 'axios'
+import axios from 'axios';
+import Navbar from '../../Components/navbar';
 import configuration from "../../configuration.json";
 const server_ip = configuration.server_ip;
 
@@ -44,6 +45,8 @@ function CampaignForm() {
   };
 
   return (
+    <>
+    <Navbar />
     <Container>
       <form onSubmit={handleSubmit}>
         <h2>Create Campaign</h2>
@@ -62,6 +65,7 @@ function CampaignForm() {
             setDestinationNumbers(event.target.value);
           }}
           fullWidth
+          margin-top 
         />
         <TextField
           label="Message"
@@ -78,6 +82,8 @@ function CampaignForm() {
         </Button>
       </form>
     </Container>
+    </>
+    
   );
 }
 

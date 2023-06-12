@@ -7,7 +7,7 @@ import SendIcon from '@mui/icons-material/Send'
 import withAuth from '../../Components/withAuth';
 import swal from 'sweetalert'
 import axios from 'axios'
-import configuration from "../../configuration.json";
+import configuration from "../../configuration/configuration.json";
 import Navbar from '../../Components/navbar';
 const server_ip = configuration.server_ip;
 

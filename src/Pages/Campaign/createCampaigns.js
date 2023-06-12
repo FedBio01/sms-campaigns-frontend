@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Container } from '@mui/material';
 import axios from 'axios';
 import Navbar from '../../Components/navbar';
-import configuration from "../../configuration.json";
+import configuration from "../../configuration/configuration.json";
 const server_ip = configuration.server_ip;
 
 function CampaignForm() {

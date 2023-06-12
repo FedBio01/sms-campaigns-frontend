@@ -6,7 +6,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import "./login.css"
-import configuration from "../../configuration.json";
+import configuration from "../../configuration/configuration.json";
 const server_ip = configuration.server_ip;
 
 async function loginUser(credentials) {

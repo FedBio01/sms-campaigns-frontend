@@ -6,7 +6,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import swal from 'sweetalert'
 import "./signup.css"
-import configuration from "../../configuration.json";
+import configuration from "../../configuration/configuration.json";
 const server_ip = configuration.server_ip;
 
 //controllo email valida

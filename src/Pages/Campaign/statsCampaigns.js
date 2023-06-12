@@ -5,7 +5,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { Container } from '@mui/material';
 import withAuth from '../../Components/withAuth';
 import axios from 'axios'
-import configuration from "../../configuration.json";
+import configuration from "../../configuration/configuration.json";
 import Navbar from '../../Components/navbar';
 const server_ip = configuration.server_ip;
 

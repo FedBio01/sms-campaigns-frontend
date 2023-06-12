@@ -6,6 +6,7 @@ import { Container } from '@mui/material';
 import withAuth from '../../Components/withAuth';
 import axios from 'axios'
 import configuration from "../../configuration.json";
+import Navbar from '../../Components/navbar';
 const server_ip = configuration.server_ip;
 
 
@@ -47,32 +48,32 @@ const VisualizeCampaigns = () => {
     }, []);
 
     return (
-        <Container>
-            <div style={{ height: 700, width: '100%' }}>
-                <h2>Campaign Storage</h2>
-                <DataGrid
-                    getRowId={(row) => row._id}
-                    rows={tableData}
-                    columns={columns}
-                    getRowHeight={() => 'auto'}
-                    slots={{ toolbar: GridToolbar }}
-                    sx={{
-                        '&.MuiDataGrid-root--densityCompact .MuiDataGrid-cell': {
-                            py: 1,
-                        },
-                        '&.MuiDataGrid-root--densityStandard .MuiDataGrid-cell': {
-                            py: '15px',
-                        },
-                        '&.MuiDataGrid-root--densityComfortable .MuiDataGrid-cell': {
-                            py: '22px',
-                        },
-                    }}
-                />
-            </div>
-
-        </Container>
-
-
+        <>
+            <Navbar />
+            <Container>
+                <div style={{ height: 700, width: '100%' }}>
+                    <h2>Campaign Storage</h2>
+                    <DataGrid
+                        getRowId={(row) => row._id}
+                        rows={tableData}
+                        columns={columns}
+                        getRowHeight={() => 'auto'}
+                        slots={{ toolbar: GridToolbar }}
+                        sx={{
+                            '&.MuiDataGrid-root--densityCompact .MuiDataGrid-cell': {
+                                py: 1,
+                            },
+                            '&.MuiDataGrid-root--densityStandard .MuiDataGrid-cell': {
+                                py: '15px',
+                            },
+                            '&.MuiDataGrid-root--densityComfortable .MuiDataGrid-cell': {
+                                py: '22px',
+                            },
+                        }}
+                    />
+                </div>
+            </Container>
+        </>
     );
 }
 

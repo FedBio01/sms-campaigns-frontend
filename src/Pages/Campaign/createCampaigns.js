@@ -70,6 +70,7 @@ function CampaignForm() {
           fullWidth
         />
         </Box>
+        <Box mb={2}>
         <TextField
           label="Message"
           value={message}
@@ -80,6 +81,7 @@ function CampaignForm() {
           rows={4}
           fullWidth
         />
+        </Box>
         <Button variant="contained" type="submit">
           Create
         </Button>

@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Logout from '../Pages/Logout'
 import {useNavigate} from 'react-router-dom'
 
 const pages = ['Home', 'Login', 'Signup'];
@@ -34,6 +35,8 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  
 
   return (
     <AppBar position="static">
@@ -88,7 +91,7 @@ function ResponsiveAppBar() {
                 {page}
               </Button>
             ))}
-
+            <Logout/>
             <Tooltip title="Open settings">
               <Button onClick={handleOpenUserMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
                 Campaign

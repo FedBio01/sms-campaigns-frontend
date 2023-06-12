@@ -33,7 +33,7 @@ const VisualizeCampaigns = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        axios.get(`http://${server_ip}/api/visualize-campaign`, {
+        axios.get(`http://${server_ip}/api/campaign/visualize-campaign`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token

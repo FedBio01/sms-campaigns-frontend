@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {TextField,InputAdornment,FormControl,InputLabel,IconButton,Button,Input} from "@mui/material";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TextField, InputAdornment, FormControl, InputLabel, IconButton, Button, Input } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
@@ -15,41 +15,41 @@ const isEmail = (email) =>
 
 
 const SignUp = () => {
-    const [showPassword, setShowPassword] = React.useState(false);
-    const navigate = useNavigate();
+  const [showPassword, setShowPassword] = React.useState(false);
+  const navigate = useNavigate();
 
-    //input
-    const [username, setUsername] = useState ();
-    const [password, setPassword] = useState ();
-    const [email, setEmail] = useState ();
-    let credentials = { username, email, password};
+  //input
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+  let credentials = { username, email, password };
 
-    //input error
-    const [usernameError, setUsernameError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+  //input error
+  const [usernameError, setUsernameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
-    //onBlur Username
-    const handleUsername = () => {
-      if (!username) {
-        setUsernameError(true);
-        return;
-      }
-  
-      setUsernameError(false);
-    };
+  //onBlur Username
+  const handleUsername = () => {
+    if (!username) {
+      setUsernameError(true);
+      return;
+    }
 
-    
-     //onBlur Email
-    const handleEmail = () => {
-       console.log(isEmail(email));
-      if (!isEmail(email)) {
-          setEmailError(true);
-          return;
-      }
+    setUsernameError(false);
+  };
 
-     setEmailError(false);
-    };
+
+  //onBlur Email
+  const handleEmail = () => {
+    console.log(isEmail(email));
+    if (!isEmail(email)) {
+      setEmailError(true);
+      return;
+    }
+
+    setEmailError(false);
+  };
 
   //onBlur Password
   const handlePassword = () => {
@@ -66,40 +66,40 @@ const SignUp = () => {
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (event) => {
-      event.preventDefault();
-    };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
 
-  
 
-    const handleSubmit = async e => {
-      e.preventDefault();
-      fetch(`http://${server_ip}/api/signup`, {
-        method: 'POST',
-        headers: {
-         'Content-Type': 'application/json'
-         },
-        body: JSON.stringify(credentials)
-      })
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    fetch(`http://${server_ip}/api/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
       .then((data) => data.json())
-      .then((data)=>{
-        if(data.status != null && data.status!==200)
-        swal("Error",data.message,"error");
-          
-        else{
-          swal("Success","","success");
+      .then((data) => {
+        if (data.status != null && data.status !== 200)
+          swal("Error", data.message, "error");
+
+        else {
+          swal("Success", "", "success");
           navigate("/login")
-        }  
+        }
       })
       .catch((error) => {
-       alert("Registration failed due to: " + error.message);
+        alert("Registration failed due to: " + error.message);
       });
-    }
+  }
 
-    return (
-      <div className="signup-box" style={{ marginTop: "120px", width:"45%" }}>
-        <h2>Signup</h2>
+  return (
+    <div className="signup-box" style={{ marginTop: "120px", width: "45%" }}>
+      <h2>Signup</h2>
       <div style={{ marginTop: "10px" }}>
         <TextField
           error={usernameError}
@@ -159,7 +159,7 @@ const SignUp = () => {
                   onMouseDown={handleMouseDownPassword}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
-                
+
                 </IconButton>
               </InputAdornment>
             }
@@ -181,11 +181,11 @@ const SignUp = () => {
       <div style={{ marginTop: "20px", fontSize: "15px" }} margin="left">
         <br />
         Do you have an account? {" "}
-        <small style={{ textDecoration: "underline", color: "blue",  fontSize: "15px"}} onClick={() => {navigate("/login")}}>
+        <small style={{ textDecoration: "underline", color: "blue", fontSize: "15px" }} onClick={() => { navigate("/login") }}>
           Sign In
         </small>
       </div>
     </div>
-    )
+  )
 }
 export default SignUp;

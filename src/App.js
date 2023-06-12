@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 //import React, {useState} from "react";
 import Login from './Pages/Login/Login';
 import ErrorPage from './Pages/ErrorPage';
@@ -10,8 +10,7 @@ import VisualizeCampaigns from './Pages/Campaign/visualizeCampaigns';
 import SendCampaigns from './Pages/Campaign/sendCampaign';
 
 function App() {
-    return <Router> 
-    
+  return <Router>
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
@@ -24,6 +23,6 @@ function App() {
     </Routes>
   </Router>;
 
-  }
+}
 
 export default App;

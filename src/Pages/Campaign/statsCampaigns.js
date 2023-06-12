@@ -17,10 +17,10 @@ const columns = [
 
   { field: 'name', headerName: 'Name', width: 300, },
   { field: 'totalSms', headerName: '#sms', width: 120 },
-  { field: 'start', headerName: 'Start', width: 230  },
-  { field: 'percentSent', headerName : '%Sent sms'},
+  { field: 'start', headerName: 'Start', width: 230 },
+  { field: 'percentSent', headerName: '%Sent sms' },
   { field: 'totalSent', headerName: '#Sent sms', width: 120 },
-  { field: 'totalRejected', headerName: '#Rejected sms', width: 120},
+  { field: 'totalRejected', headerName: '#Rejected sms', width: 120 },
 ]
 
 
@@ -34,7 +34,7 @@ const StatsCampaigns = () => {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user')
 
-    axios.post(`http://${server_ip}/api/get-statistics-by-user`, { user: JSON.parse(user) }, {
+    axios.post(`http://${server_ip}/api/campaign/get-statistics-by-user`, { user: JSON.parse(user) }, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + token

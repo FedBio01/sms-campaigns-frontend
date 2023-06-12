@@ -32,7 +32,7 @@ const SendCampaigns = () => {
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
 
-        axios.post(`http://${server_ip}/api/user-activable-campaign`, { user: JSON.parse(user) }, {
+        axios.post(`http://${server_ip}/api/campaign/user-activable-campaign`, { user: JSON.parse(user) }, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token

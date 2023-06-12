@@ -49,7 +49,7 @@ const SendCampaigns = () => {
         let campaign = { campaign: cellValues.row.name };
 
         try {
-            await axios.post(`http://${server_ip}/api/send-campaign`, campaign, {
+            await axios.post(`http://${server_ip}/api/campaign/send-campaign`, campaign, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + token

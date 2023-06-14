@@ -15,10 +15,11 @@ const server_ip = configuration.server_ip;
 
 const columns = [
 
-  { field: 'name', headerName: 'Name', width: 300, },
+  { field: 'name', headerName: 'Name', width: 230,},
   { field: 'totalSms', headerName: '#sms', width: 120 },
-  { field: 'start', headerName: 'Start', width: 230 },
-  { field: 'percentSent', headerName: '%Sent sms' },
+  { field: 'start', headerName: 'Start', width: 240 },
+  { field: 'percentSent', headerName: '%Sent sms', width: 120 },
+  { field: 'avgSentTime', headerName: 'Avg Sent Time (s)', width: 140},
   { field: 'totalSent', headerName: '#Sent sms', width: 120 },
   { field: 'totalRejected', headerName: '#Rejected sms', width: 120 },
 ]
